@@ -11,7 +11,7 @@ face_cascade=cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
 ds_factor=0.6
 
 class_labels = ['Angry','Disgust','Fear','Happy','Sad','Surprise','Neutral']
-my_model = tf.keras.models.load_model('model_face_emotions_detection.h5')
+my_model = tf.keras.models.load_model('model.h5')
 
 
 #Initialize the Flask app
@@ -57,7 +57,7 @@ def gen_frames():
              draw_border(frame, (x,y),(x+w,y+h),(0,0,204), 2,15, 10)
              
              img_color_crop = frame[y:y+h,x:x+w]
-             final_image = cv2.resize(img_color_crop, (224,224))
+             final_image = cv2.resize(img_color_crop, (48,48))
              final_image = np.expand_dims(final_image, axis = 0)
              final_image = final_image/255.0
         
